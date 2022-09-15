@@ -13,6 +13,13 @@ export interface Props {
   setBodyPart: any;
   data: any;
   handleSearch: any ; 
+} 
+interface Props2 {
+  data : any ; 
+  bodyParts: undefined;
+  setBodyPart: undefined;
+  bodyPart: undefined;
+  handleSearch: undefined ;
 }
 
 const LeftArrow = () => {
@@ -35,7 +42,7 @@ const RightArrow = () => {
   );
 };
 
-const HorizontalScrollBar: FC<Props> = ({
+const HorizontalScrollBar: FC<Props | Props2> = ({
   data,
   bodyParts,
   setBodyPart,

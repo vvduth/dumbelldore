@@ -26,6 +26,9 @@ const options: Options = {
 const ExerciseDetail = () => {
   const [exDetail, setExDetail] = useState<any>({});
   const [exVideos, setExVideos] = useState<any>();
+
+  const [targetMuscleExercises, setTargetMuscleExercises] = useState([]);
+  const [equipmentExercises, setEquipmentExercises] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
@@ -48,6 +51,13 @@ const ExerciseDetail = () => {
         youTubeOptions as Options
       );
       setExVideos(videoData);
+
+      const targetMuscleExercisesData = await fetchData(`${exURL}/exercises/target/${exDetail.target}`, exerciseOptions);
+      setTargetMuscleExercises(targetMuscleExercisesData);
+      console.log("afterfetch", targetMuscleExercisesData)
+
+      const equimentExercisesData = await fetchData(`${exURL}/exercises/equipment/${exDetail.equipment}`, exerciseOptions);
+      setEquipmentExercises(equimentExercisesData);
       
     };
 
@@ -58,7 +68,7 @@ const ExerciseDetail = () => {
     <Box>
       <Details exerciseDetails={exDetail} />
       <ExerciseVideo exerciseVideo={exVideos} name = {exDetail.name}/>
-      <SimilarExercise />
+      <SimilarExercise targetMuscleExercisesData={targetMuscleExercises}  equimentExercisesData={equipmentExercises}/>
     </Box>
   );
 };
