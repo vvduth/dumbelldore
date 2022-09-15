@@ -31,7 +31,7 @@ const HeroBanner = () => {
       </Typography>
 
       <Typography fontSize="22px" lineHeight="35px" mb={4}>
-        Check out to become more explosive baller in any realms of human
+        Check out to become more explosive baller in any realms <br/> of human
         endeavour
       </Typography>
 
